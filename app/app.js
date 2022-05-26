@@ -24,11 +24,12 @@ class CarList {
   async render() {
     const rootApp = document.querySelector("#app");
     const header = document.createElement("div");
+    const main = document.getElementById("main");
     header.className = "header";
     header.innerHTML = `
     <div class="header-title" >
     <div>Car SHop</div>
-    <div>Cart</div>
+    <a href="../car.html"><div class="add-car">Add Car</div></a>
     </div>
     `;
 
@@ -66,6 +67,7 @@ class CarList {
     rootApp.append(header, carListDOM);
   }
 }
+
 
 const app = new CarList();
 app.render();

@@ -56,3 +56,19 @@ button {
   cursor: pointer;
   margin-bottom: 1rem;
 }
+.add-car{
+  cursor: pointer;
+  margin-right: 3rem;
+}
+.main{
+  padding: 4rem;
+  top:5em
+}
+main form{
+  display:flex;
+  flex-direction: column;
+}
+.main form input{
+  padding:2rem;
+  margin-bottom: 1rem;
+}
