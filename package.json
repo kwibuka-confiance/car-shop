@@ -1,0 +1,22 @@
+{
+  "name": "car-shop",
+  "version": "1.0.0",
+  "description": "App that help you to buy your favorite Car ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwibuka-confiance/car-shop.git"
+  },
+  "author": "Kwibuka Confiance",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kwibuka-confiance/car-shop/issues"
+  },
+  "homepage": "https://github.com/kwibuka-confiance/car-shop#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}

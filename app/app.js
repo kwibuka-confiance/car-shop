@@ -1,11 +1,6 @@
-class Car {
-  constructor(title, imgUrl, price, description) {
-    this.title = title;
-    this.imgUrl = imgUrl;
-    this.price = price;
-    this.description = description;
-  }
-}
+// import axios from 'axios'
+import { Car } from "./models/car.js";
+import { CarElement } from "./carElement.js";
 
 class CarList {
   carlist = [
@@ -26,7 +21,7 @@ class CarList {
   // todo create the class called CarElement and then
   // todo  paste the car element inside then call it inside the carList
 
-  render() {
+  async render() {
     const rootApp = document.querySelector("#app");
     const header = document.createElement("div");
     header.className = "header";
@@ -39,19 +34,33 @@ class CarList {
 
     const carListDOM = document.createElement("ul");
     carListDOM.className = "list";
-    for (let car of this.carlist) {
-      const carItem = document.createElement("li");
-      carItem.innerHTML = `
-      <div>
-      <div class="list-image">
-      <img src="${car.imgUrl}" alt="${car.title}"/>
-      </div>
-      <div class="title">${car.title}</div>
-      <div class="description">${car.description}</div>
-      <button>Add to Cart</button>
-      </div>
-      `;
-      carListDOM.append(carItem);
+
+    try {
+      const response = await axios.get(
+        "https://car-shop-3164a-default-rtdb.firebaseio.com/cars.json"
+      );
+      const results = response.data;
+      for (let carId in results) {
+        console.log(
+          new Car(
+            results[carId].title,
+            results[carId].imgUrl,
+            results[carId].price,
+            results[carId].description
+          )
+        );
+        const carItem = new CarElement(
+          new Car(
+            results[carId].title,
+            results[carId].imgUrl,
+            results[carId].price,
+            results[carId].description
+          )
+        );
+        carListDOM.append(carItem.render());
+      }
+    } catch (error) {
+      console.log(error);
     }
 
     rootApp.append(header, carListDOM);
